@@ -4,6 +4,7 @@ module.exports = {
   mode: 'production',
   context: path.join(__dirname, './'),
   devtool: 'cheap-eval-source-map',
+  devServer: { inline: true },
   entry: './app/app.jsx',
   output: {
     path: path.join(__dirname, 'public'),
