@@ -6,29 +6,12 @@ const firebase = require('firebase');
 /* the main page for the index route of this app */
 const HelloWorld = () => {
     var dbRef = firebase.app().database().ref('/categories/foodAndLiquidContainers');
-    // dbRef.push({
-    //     "index" : 1,
-    //     "previous_stage": 5,
-    //     "stage_name": "flexibility",
-    //     "description": "Is your material rigid or flexible?",
-    //     "choices": [
-    //         {
-    //             "title": "Rigid",
-    //             "image": "kslndvipdfbnw",
-    //             "description": "An item qualifies as rigid if you set it on a table and it would retain its shape.",
-    //             "next_stage": "color"
-    //         },
-    //         {
-    //             "title": "Flexible",
-    //             "image": "kslndvipdfbnw",
-    //             "description": "A description for flexible goes here.",
-    //             "next_stage": "stretchy"
-    //         }
-    //     ]
-    // }).then((response) => {
-    //     console.dir(response)
-    // })
     var stages;
+    dbRef.on("value", function(snapshot) {
+        console.log(snapshot.val());
+    }, function (errorObject) {
+        console.log("The read failed: " + errorObject.code);
+    });
 
     return (
         <div>
@@ -36,8 +19,6 @@ const HelloWorld = () => {
             <LeftNav/>
         </div>
     );
-}
-)
-;
+};
 
 export default HelloWorld;
