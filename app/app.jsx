@@ -1,28 +1,26 @@
-const React = require('react');
-const { render } = require('react-dom');
+import React from 'react';
+import { render } from 'react-dom';
 
 // router
-const Route = require('react-router-dom').Route;
-const BrowserRouter = require('react-router-dom').BrowserRouter;
-const hashHistory = require('react-router-dom').hashHistory;
+import { Route } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom';
+import { hashHistory } from 'react-router-dom';
 
 // redux
-const { createStore } = require('redux');
-const { Provider } = require('react-redux');
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 const votes = require('./reducers');
 
 let store = createStore(votes);
 
 /* Import Components */
-const HelloWorld = require('./components/HelloWorld');
-const About = require('./components/About');
+import HelloWorld from './components/HelloWorld';
 
-render((
+render(
   <Provider store={store}>
     <BrowserRouter>
       <div>
         <Route exact path="/" component={HelloWorld}/>
-        <Route path="/about" component={About}/>
       </div>
     </BrowserRouter>
-  </Provider>), document.getElementById('main'));
+  </Provider>, document.getElementById('main'));
