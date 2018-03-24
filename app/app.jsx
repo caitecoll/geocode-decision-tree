@@ -1,6 +1,16 @@
+import firebase from 'firebase';
 import React from 'react';
 import { render } from 'react-dom';
 
+var config = {
+    apiKey: "AIzaSyDM_Ny1NVCkqMwZqnOU7BQXm4aqzNCDQ-s",
+    authDomain: "decisiontree-72710.firebaseapp.com",
+    databaseURL: "https://decisiontree-72710.firebaseio.com",
+    projectId: "decisiontree-72710",
+    storageBucket: "",
+    messagingSenderId: "954065223280"
+};
+firebase.initializeApp(config);
 // router
 import { Route } from 'react-router-dom'
 import { BrowserRouter } from 'react-router-dom';
