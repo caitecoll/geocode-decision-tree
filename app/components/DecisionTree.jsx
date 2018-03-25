@@ -19,6 +19,10 @@ class DecisionTree extends Component {
         }
     }
 
+    changeActiveStage(stageId) {
+        this.setState({stages: this.state.stages, activeStage: this.state.stages[stageId]})
+    }
+
     static findActiveStage(stages) {
         let activeStage = {};
         for (let stageId in stages) {
@@ -47,10 +51,10 @@ class DecisionTree extends Component {
         return (
             <Grid>
                 <Row className="show-grid">
-                    <Col xs={4} md={4} lg={4} >
-                        <LeftNav stages={this.state.stages}/>
+                    <Col xs={3} md={3} lg={3} >
+                        <LeftNav onStageClick={this.changeActiveStage.bind(this)} stages={this.state.stages}/>
                     </Col>
-                    <Col xs={8} md={8} lg={8}>
+                    <Col xs={9} md={9} lg={9}>
                         <h1>The Decision Tree</h1>
                         <StageDisplay activeStage={this.state.activeStage}></StageDisplay>
                     </Col>
