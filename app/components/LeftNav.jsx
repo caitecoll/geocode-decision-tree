@@ -7,7 +7,6 @@ const LeftNav = ({stages, onStageClick}) => {
 
     let activeIndex = 1;
 
-    console.log(stages);
     if (stages.length > 0) {
         return (
             <Nav activeKey={activeIndex} style={styles.navbarStyles}>

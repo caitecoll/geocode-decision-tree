@@ -9,7 +9,6 @@ const firebase = require('firebase');
 
 /* the main page for the index route of this app */
 class DecisionTree extends Component {
-
     constructor() {
         super();
 
@@ -18,15 +17,45 @@ class DecisionTree extends Component {
             activeStage: {},
             chosenStages: []
         }
+        this.updateStage = this.updateStage.bind(this);
+        // this.getStages = this.getStages.bind(this);
+        // this.findNewActiveStage.bind(this);
     }
 
     changeActiveStage(stageId) {
-        this.setState({stages: this.state.stages, activeStage: this.state.stages[stageId]})
+        this.setState(
+          {
+            stages: this.state.stages,
+            activeStage: this.state.stages[stageId]
+          }
+        );
     }
 
-    addChosenStage(stage) {
+    findNewActiveStage(stageIndex) {
+      // search for that id in state.stages
+      const stages = this.state.stages;
 
+      let active = {};
+
+      // update state.activeStage = that stage
+      for (let stageId in stages) {
+        if (stages.hasOwnProperty(stageId)) {
+          if (stages[stageId].index === stageIndex)
+            active = stages[stageId];
+          }
+        }
+
+      return active;
     }
+
+    // updateStages() {
+    //   this.setState({
+    //     activeStage: addChosenStage(stage);
+    //     chosenStages: getStages(stage)
+    //   })
+    // }
+    //
+    // updateLeftNav
 
     getStages(stage) {
       this.state.chosenStages.push(stage);
@@ -44,6 +73,16 @@ class DecisionTree extends Component {
             }
         }
         return activeStage;
+    }
+
+    updateStage(nextStageIndex) {
+      const activeStage = this.findNewActiveStage(nextStageIndex);
+
+      this.setState({
+        activeStage: activeStage,
+        chosenStages: this.getStages(activeStage)
+      })
+      console.log(this.state);
     }
 
     componentDidMount() {
@@ -72,7 +111,7 @@ class DecisionTree extends Component {
                     </Col>
                     <Col xs={9} md={9} lg={9}>
                         <h1>The Decision Tree</h1>
-                        <StageDisplay activeStage={this.state.activeStage}></StageDisplay>
+                        <StageDisplay activeStage={this.state.activeStage} updateStage={this.updateStage}></StageDisplay>
                     </Col>
                 </Row>
             </Grid>
