@@ -8,6 +8,7 @@ const LeftNav = ({stages}) => {
     const displayStages = [];
 
     for (let property in stages) {
+        console.dir(stages[property]);
         if (stages.hasOwnProperty(property)) {
             displayStages.push(stages[property]);
         }
@@ -17,7 +18,11 @@ const LeftNav = ({stages}) => {
         <ListGroup>
             {
                 displayStages.map((stage) => {
-                    return (<ListGroupItem key={stage.index} >{stage && stage.stage_name}</ListGroupItem>);
+                    if (stage.isActive) {
+                        return (<ListGroupItem key={stage.index} style={styles.activeListItem}>{stage && stage.stage_name}</ListGroupItem>);
+                    } else {
+                        return (<ListGroupItem key={stage.index} >{stage && stage.stage_name}</ListGroupItem>);
+                    }
                 })
             }
         </ListGroup>
@@ -25,3 +30,9 @@ const LeftNav = ({stages}) => {
 };
 
 export default LeftNav;
+
+const styles = {
+  activeListItem: {
+      backgroundColor: 'blue'
+  }
+};
