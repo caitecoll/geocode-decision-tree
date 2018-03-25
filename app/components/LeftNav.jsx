@@ -3,19 +3,23 @@ import ListGroup from 'react-bootstrap/lib/ListGroup';
 import ListGroupItem from 'react-bootstrap/lib/ListGroupItem';
 
 /* the main page for the index route of this app */
-const LeftNav = (stagesObject) => {
-    console.log(stagesObject.stages);
+const LeftNav = ({stages}) => {
+
     const displayStages = [];
-    for (let property in stagesObject.stages) {
-        if (stagesObject.stages.hasOwnProperty(property)) {
-            displayStages.push(stagesObject.stages[property]);
+
+    for (let property in stages) {
+        if (stages.hasOwnProperty(property)) {
+            displayStages.push(stages[property]);
         }
     }
-    console.log(displayStages)
+
     return (
         <ListGroup>
-            <ListGroupItem>{displayStages[0] && displayStages[0].stage_name}</ListGroupItem>
-            <ListGroupItem>{displayStages[1] && displayStages[1].stage_name}</ListGroupItem>
+            {
+                displayStages.map((stage) => {
+                    return (<ListGroupItem key={stage.index} >{stage && stage.stage_name}</ListGroupItem>);
+                })
+            }
         </ListGroup>
     );
 };
