@@ -24,13 +24,13 @@ const votes = require('./reducers');
 let store = createStore(votes);
 
 /* Import Components */
-import HelloWorld from './components/HelloWorld';
+import DecisionTree from './components/DecisionTree';
 
 render(
   <Provider store={store}>
     <BrowserRouter>
       <div>
-        <Route exact path="/" component={HelloWorld}/>
+        <Route exact path="/" component={DecisionTree}/>
       </div>
     </BrowserRouter>
   </Provider>, document.getElementById('main'));

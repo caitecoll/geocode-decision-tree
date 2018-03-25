@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import LeftNav from './LeftNav';
+import StageDisplay from './StageDisplay/StageDisplay'
 import Grid from "react-bootstrap/es/Grid";
 import Row from "react-bootstrap/es/Row";
 import Col from "react-bootstrap/es/Col";
@@ -7,7 +8,7 @@ import Col from "react-bootstrap/es/Col";
 const firebase = require('firebase');
 
 /* the main page for the index route of this app */
-class HelloWorld extends Component {
+class DecisionTree extends Component {
 
     constructor() {
         super();
@@ -35,6 +36,7 @@ class HelloWorld extends Component {
                     </Col>
                     <Col xs={8} md={8} lg={8}>
                         <h1>The Decision Tree</h1>
+                        <StageDisplay></StageDisplay>
                     </Col>
                 </Row>
             </Grid>
@@ -43,4 +45,4 @@ class HelloWorld extends Component {
 
 };
 
-export default HelloWorld;
+export default DecisionTree;
