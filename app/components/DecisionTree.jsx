@@ -57,9 +57,12 @@ class DecisionTree extends Component {
     //
     // updateLeftNav
 
-    getStages(stage) {
-      this.state.chosenStages.push(stage);
-      return this.state.chosenStages;
+    getStages(stage){
+        const stageExists = this.state.chosenStages.find((chosenStage) => stage.index === chosenStage.index);
+        if (!stageExists) {
+            this.state.chosenStages.push(stage);
+        }
+        return this.state.chosenStages;
     }
 
     static findActiveStage(stages) {
