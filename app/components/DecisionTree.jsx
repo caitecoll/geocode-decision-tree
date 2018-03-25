@@ -15,12 +15,17 @@ class DecisionTree extends Component {
 
         this.state = {
             stages: {},
-            activeStage: {}
+            activeStage: {},
+            chosenStages: []
         }
     }
 
     changeActiveStage(stageId) {
         this.setState({stages: this.state.stages, activeStage: this.state.stages[stageId]})
+    }
+
+    addChosenStage(stage) {
+
     }
 
     static findActiveStage(stages) {
@@ -29,6 +34,7 @@ class DecisionTree extends Component {
             if (stages.hasOwnProperty(stageId)) {
                 if (stages[stageId].isActive) {
                     activeStage = stages[stageId];
+                    activeStage.firebaseId = stageId;
                 }
             }
         }
@@ -40,8 +46,7 @@ class DecisionTree extends Component {
         dbRef.on("value", (snapshot) => {
             const stages = snapshot.val();
             let activeStage = DecisionTree.findActiveStage(stages);
-            console.dir(stages);
-            this.setState({stages: snapshot.val(), activeStage});
+            this.setState({stages: snapshot.val(), activeStage, chosenStages: [activeStage] });
         }, function (errorObject) {
             console.log("The read failed: " + errorObject.code);
         });
@@ -52,7 +57,7 @@ class DecisionTree extends Component {
             <Grid>
                 <Row className="show-grid">
                     <Col xs={3} md={3} lg={3} >
-                        <LeftNav onStageClick={this.changeActiveStage.bind(this)} stages={this.state.stages}/>
+                        <LeftNav onStageClick={this.changeActiveStage.bind(this)} stages={this.state.chosenStages}/>
                     </Col>
                     <Col xs={9} md={9} lg={9}>
                         <h1>The Decision Tree</h1>

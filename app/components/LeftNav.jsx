@@ -5,25 +5,13 @@ import Nav from "react-bootstrap/es/Nav";
 /* the main page for the index route of this app */
 const LeftNav = ({stages, onStageClick}) => {
 
-    const displayStages = [];
     let activeIndex = 1;
 
-    for (let property in stages) {
-        if (stages.hasOwnProperty(property)) {
-            stages[property].firebaseId = property;
-            displayStages.push(stages[property]);
-            if (stages[property].isActive) {
-                activeIndex = stages[property].index;
-                console.log(activeIndex)
-            }
-        }
-    }
-    console.log(onStageClick)
-
-    return (
-        <Nav activeKey={activeIndex} style={styles.navbarStyles}>
-            {
-                displayStages.map((stage, index) => {
+    console.log(stages);
+    if (stages.length > 0) {
+        return (
+            <Nav activeKey={activeIndex} style={styles.navbarStyles}>
+                {stages.map((stage, index) => {
                     if (stage.isActive) {
                         return (<NavItem eventKey={stage.index}
                                          onClick={() => onStageClick(stage.firebaseId)}
@@ -35,9 +23,12 @@ const LeftNav = ({stages, onStageClick}) => {
                                          key={index}>{stage && stage.stage_name}</NavItem>);
                     }
                 })
-            }
-        </Nav>
-    );
+                }
+            </Nav>
+        );
+    } else {
+        return (<Nav activeKey={activeIndex} style={styles.navbarStyles}></Nav>)
+    }
 };
 
 export default LeftNav;
