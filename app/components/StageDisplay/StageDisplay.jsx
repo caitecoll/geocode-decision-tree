@@ -15,7 +15,7 @@ const StageDisplay = (props) => {
       return (
         <div>Throw it in the Trash!</div>
       );
-    } else if (stage.index == 200){
+    } else if (stage.index == 100){
       return (
         <div>Recycle It!</div>
       );

@@ -40,8 +40,7 @@ class DecisionTree extends Component {
       // update state.activeStage = that stage
       for (let stageId in stages) {
         if (stages.hasOwnProperty(stageId)) {
-          if (stages[stageId].index === stageIndex)
-            console.log('inside this conditional');
+          if (stages[stageId].index == stageIndex)
             active = stages[stageId];
           }
         }
@@ -80,10 +79,10 @@ class DecisionTree extends Component {
     }
 
     updateStage(nextStageIndex) {
-      console.log(nextStageIndex);
+      console.log(`Next stage: ${nextStageIndex}`);
       const activeStage = this.findNewActiveStage(nextStageIndex);
 
-      console.log(activeStage);
+      console.log(`Next stage: ${activeStage}`);
 
       this.setState({
         activeStage: activeStage,
