@@ -1,0 +1,10 @@
+.container {
+  max-width: 50%;
+  margin: auto;
+  text-align: center;
+}
+
+.image {
+  width: 100%;
+  margin-bottom: 2%;
+}
