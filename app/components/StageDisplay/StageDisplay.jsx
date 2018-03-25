@@ -32,17 +32,18 @@ const StageDisplay = (props) => {
             <Row>
               {choices.map((choice, index) => { return (<Choice key={index} choice={choice} updateStage={props.updateStage}></Choice>)})}
             </Row>
+            <p>Select one of the above options to find out if the item is recyclable. </p>
         </Grid>
       );
     }
   }
 
-  return (
-    <div>
-      <StageHeader stage={stage} ></StageHeader>
-      {setContent()}
-    </div>
-  );
+    return (
+        <div>
+            <StageHeader stage={stage} ></StageHeader>
+            {setContent()}
+        </div>
+    );
 };
 
 export default CSSModules(StageDisplay, styles);

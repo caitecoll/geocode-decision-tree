@@ -3,7 +3,7 @@ import NavItem from "react-bootstrap/es/NavItem";
 import Nav from "react-bootstrap/es/Nav";
 
 /* the main page for the index route of this app */
-const LeftNav = ({stages, onStageClick}) => {
+const LeftNav = ({stages, onStageClick, activeStage}) => {
 
     let activeIndex = 1;
 
@@ -11,14 +11,15 @@ const LeftNav = ({stages, onStageClick}) => {
         return (
             <Nav activeKey={activeIndex} style={styles.navbarStyles}>
                 {stages.map((stage, index) => {
-                    if (stage.isActive) {
+                    if (stage.index === activeStage.index) {
                         return (<NavItem eventKey={stage.index}
                                          onClick={() => onStageClick(stage.firebaseId)}
-                                         key={index}
+                                            key={index}
                                          style={styles.activeListItem}>{stage && stage.stage_name}</NavItem>);
                     } else {
                         return (<NavItem eventKey={stage.index}
                                          onClick={() => onStageClick(stage.firebaseId)}
+                                         style={styles.nonactiveListItem}
                                          key={index}>{stage && stage.stage_name}</NavItem>);
                     }
                 })
@@ -34,7 +35,10 @@ export default LeftNav;
 
 const styles = {
     activeListItem: {
-        backgroundColor: '#D3D3D3',
+        backgroundColor: '#aaaaaa',
+    },
+    nonactiveListItem: {
+        backgroundColor: '#dddddd',
     },
     navbarStyles: {
         marginTop: '10vh'

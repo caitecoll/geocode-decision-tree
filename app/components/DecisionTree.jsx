@@ -112,11 +112,12 @@ class DecisionTree extends Component {
         return (
             <Grid>
                 <Row className="show-grid">
+                    <h1 className="text-center">The Decision Tree</h1>
                     <Col xs={3} md={3} lg={3} >
-                        <LeftNav onStageClick={this.changeActiveStage.bind(this)} stages={this.state.chosenStages}/>
+                        <LeftNav onStageClick={this.changeActiveStage.bind(this)} activeStage={this.state.activeStage} stages={this.state.chosenStages}/>
                     </Col>
                     <Col xs={9} md={9} lg={9}>
-                        <h1>The Decision Tree</h1>
+
                         <StageDisplay activeStage={this.state.activeStage} updateStage={this.updateStage}></StageDisplay>
                     </Col>
                 </Row>
