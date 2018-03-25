@@ -16,8 +16,12 @@ const LeftNav = ({stages}) => {
     return (
         <ListGroup>
             {
-                displayStages.map((stage) => {
-                    return (<ListGroupItem key={stage.index} >{stage && stage.stage_name}</ListGroupItem>);
+                displayStages.map((stage, index) => {
+                    if (stage.isActive) {
+                        return (<ListGroupItem key={index} style={styles.activeListItem}>{stage && stage.stage_name}</ListGroupItem>);
+                    } else {
+                        return (<ListGroupItem key={index} >{stage && stage.stage_name}</ListGroupItem>);
+                    }
                 })
             }
         </ListGroup>
@@ -25,3 +29,9 @@ const LeftNav = ({stages}) => {
 };
 
 export default LeftNav;
+
+const styles = {
+  activeListItem: {
+      backgroundColor: 'blue'
+  }
+};

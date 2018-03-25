@@ -23,11 +23,7 @@ const StageDisplay = (props) => {
     },
   ];
 
-  const stage =
-  {
-    stage_name: "Rigid or Flexible?",
-    description: "This is the stage description"
-  }
+  const stage = props.activeStage;
 
   return (
     <div>
