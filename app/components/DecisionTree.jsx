@@ -23,10 +23,6 @@ class DecisionTree extends Component {
         let activeStage = {};
         for (let stageId in stages) {
             if (stages.hasOwnProperty(stageId)) {
-                if (stages[stageId].index === 1) {
-                    activeStage = stages[stageId];
-                }
-
                 if (stages[stageId].isActive) {
                     activeStage = stages[stageId];
                 }
