@@ -10,14 +10,30 @@ const StageDisplay = (props) => {
   const choices = props.activeStage.choices || [];
   const stage = props.activeStage;
 
+  function setContent() {
+    if (stage.index == 200){
+      return (
+        <div>Throw it in the Trash!</div>
+      );
+    } else if (stage.index == 200){
+      return (
+        <div>Recycle It!</div>
+      );
+    } else {
+      return (
+        <Grid fluid={true}>
+            <Row>
+              {choices.map((choice, index) => { return (<Choice key={index} choice={choice} updateStage={props.updateStage}></Choice>)})}
+            </Row>
+        </Grid>
+      );
+    }
+  }
+
   return (
     <div>
       <StageHeader stage={stage} ></StageHeader>
-      <Grid fluid={true}>
-          <Row>
-            {choices.map((choice, index) => { return (<Choice key={index} choice={choice} updateStage={props.updateStage}></Choice>)})}
-          </Row>
-      </Grid>
+      {setContent()}
     </div>
   );
 };
