@@ -30,7 +30,7 @@ class HelloWorld extends Component {
         return (
             <Grid>
                 <Row className="show-grid">
-                    <Col xs={4} md={4} lg={4} style={}>
+                    <Col xs={4} md={4} lg={4} >
                         <LeftNav stages={this.state.stages}/>
                     </Col>
                     <Col xs={8} md={8} lg={8}>
