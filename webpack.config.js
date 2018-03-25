@@ -28,6 +28,13 @@ module.exports = {
         exclude: /node_modules/,
         loader: "babel-loader"
       },
+      { test: /\.css$/,
+        loaders: [
+          'style-loader?sourceMap',
+          'css-loader?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
+        ],
+      },
+
     ],
   },
 };
