@@ -1,6 +1,8 @@
 import React from 'react';
 import StageHeader from './components/StageHeader'
 import Choice from './components/Choice'
+import Grid from "react-bootstrap/es/Grid";
+import Row from "react-bootstrap/es/Row";
 
 const StageDisplay = (props) => {
   /* Need to change this to props.choices once we have that from the
@@ -28,7 +30,11 @@ const StageDisplay = (props) => {
   return (
     <div>
       <StageHeader stage={stage} ></StageHeader>
-      {choices.map((choice, index) => { return (<Choice key={index} choice={choice}></Choice>)})}
+      <Grid fluid=true>
+          <Row>
+            {choices.map((choice, index) => { return (<Choice key={index} choice={choice}></Choice>)})}
+          </Row>
+      </Grid>
     </div>
   );
 };
