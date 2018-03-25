@@ -28,6 +28,11 @@ class DecisionTree extends Component {
 
     }
 
+    getStages(stage) {
+      this.state.chosenStages.push(stage);
+      return this.state.chosenStages;
+    }
+
     static findActiveStage(stages) {
         let activeStage = {};
         for (let stageId in stages) {
@@ -46,7 +51,13 @@ class DecisionTree extends Component {
         dbRef.on("value", (snapshot) => {
             const stages = snapshot.val();
             let activeStage = DecisionTree.findActiveStage(stages);
-            this.setState({stages: snapshot.val(), activeStage, chosenStages: [activeStage] });
+            this.setState(
+              {
+                stages: snapshot.val(),
+                activeStage,
+                chosenStages: this.getStages(activeStage)
+              }
+            );
         }, function (errorObject) {
             console.log("The read failed: " + errorObject.code);
         });
