@@ -30,7 +30,7 @@ const StageDisplay = (props) => {
   return (
     <div>
       <StageHeader stage={stage} ></StageHeader>
-      <Grid fluid=true>
+      <Grid fluid={true}>
           <Row>
             {choices.map((choice, index) => { return (<Choice key={index} choice={choice}></Choice>)})}
           </Row>
