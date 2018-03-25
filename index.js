@@ -11,10 +11,10 @@ app.use(express.static('public'));
 app.get("/", function(request, response) {
   response.sendFile(__dirname + '/public/index.html');
 });
-
+app.set('port', (process.env.PORT || 5000));
 
 
 // listen for requests :)
-var listener = app.listen(50826, function () {
-  console.log('Your app is listening on port ' + listener.address().port);
+var listener = app.listen(app.get('port'), function () {
+  console.log('Your app is listening on port ' + app.get('port'));
 });

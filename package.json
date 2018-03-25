@@ -8,7 +8,7 @@
   "main": "server.js",
   "scripts": {
     "build": "webpack",
-    "start": "webpack && node server.js",
+    "start": "webpack && node index.js",
     "start-dev": "webpack-dev-server -d --config webpack.config.js --content-base public/"
   },
   "dependencies": {
